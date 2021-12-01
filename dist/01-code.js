@@ -60,5 +60,6 @@ function secondPart(data) {
 data.forEach((value, key, array) => {
     numberArray.push(parseStringToNumber(value));
 });
+console.log('test');
 console.log('first test: ', firstPart(numberArray));
 console.log('second test: ', secondPart(numberArray));
