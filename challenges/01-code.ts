@@ -1,17 +1,15 @@
 import * as fs from 'fs';
 
 const inputData  = fs.readFileSync('./data/01-data.txt','utf8');
+
 const data = inputData.split('\n').map(string => {
     return parseInt(string);
 })
-//const numberArray: number[] = [];
-
 
 function parseStringToNumber(string: string) {
     const number:number = parseInt(string);
     return number;
 }
-
 
 function firstPart(data:number[]){
     let increases: number = 0;
@@ -27,7 +25,6 @@ function firstPart(data:number[]){
     })
     return (increases);
 }
-
 
 function secondPart(data:number[]){
     const totalNumber: number = data.length;
