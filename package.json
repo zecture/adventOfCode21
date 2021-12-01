@@ -1,0 +1,21 @@
+{
+  "name": "adventofcode",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/01-code.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "01": "tsc && node ./dist/01-code.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.0",
+    "@types/node": "^16.11.11",
+    "typescript": "^4.5.2"
+  },
+  "dependencies": {
+    "file-system": "^2.2.2"
+  }
+}
