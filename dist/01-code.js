@@ -27,46 +27,38 @@ function parseStringToNumber(string) {
     const number = parseInt(string);
     return number;
 }
-data.forEach((value, key, array) => {
-    numberArray.push(parseStringToNumber(value));
-});
 function firstPart(data) {
-    const object = {
-        increases: 0,
-        int: 0
-    };
+    let increases = 0;
+    let int = 0;
     data.forEach((value, key) => {
-        if (value > object.int) {
-            if (object.int != 0) {
-                object.increases++;
+        if (value > int) {
+            if (key != 0) {
+                increases++;
             }
         }
-        object.int = value;
+        int = value;
     });
-    return (object);
+    return (increases);
 }
 function secondPart(data) {
-    let sumOfThree = 0;
     const totalNumber = data.length;
+    let increases = 0;
     let int = 0;
-    const returnObject = {
-        increases: 0,
-    };
     data.forEach((value, key) => {
         if (key + 2 < totalNumber) {
             let total = (value +
                 data[key + 1] +
                 data[key + 2]);
-            if (total > int && int != 0) {
-                returnObject.increases++;
-                console.log('Increased');
+            if (total > int && key != 0) {
+                increases++;
             }
-            console.log(total);
             int = total;
         }
     });
-    return returnObject;
+    return increases;
 }
-console.log(secondPart(numberArray));
-//console.log('first test: ', firstPart(numberArray));
-//console.log('total input amount: ',data.length); 
+data.forEach((value, key, array) => {
+    numberArray.push(parseStringToNumber(value));
+});
+console.log('first test: ', firstPart(numberArray));
+console.log('second test: ', secondPart(numberArray));
