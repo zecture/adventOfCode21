@@ -1,8 +1,10 @@
 import * as fs from 'fs';
 
 const inputData  = fs.readFileSync('./data/01-data.txt','utf8');
-const data = inputData.split('\n');
-const numberArray: number[] = [];
+const data = inputData.split('\n').map(string => {
+    return parseInt(string);
+})
+//const numberArray: number[] = [];
 
 
 function parseStringToNumber(string: string) {
@@ -49,10 +51,5 @@ function secondPart(data:number[]){
     return increases;
 }
 
-
-data.forEach((value,key, array) => {
-    numberArray.push(parseStringToNumber(value)); 
-})
-
-console.log('first test: ', firstPart(numberArray));
-console.log('second test: ',secondPart(numberArray));
+console.log('first test: ', firstPart(data));
+console.log('second test: ',secondPart(data));
