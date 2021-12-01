@@ -1,15 +1,9 @@
 import * as fs from 'fs';
 
 const inputData  = fs.readFileSync('./data/01-data.txt','utf8');
-
 const data = inputData.split('\n').map(string => {
     return parseInt(string);
 })
-
-function parseStringToNumber(string: string) {
-    const number:number = parseInt(string);
-    return number;
-}
 
 function firstPart(data:number[]){
     let increases: number = 0;
@@ -33,18 +27,13 @@ function secondPart(data:number[]){
 
     data.forEach((value, key) => {
         if (key+2 < totalNumber){
-            let total = (
-                value +
-                data[key+1] +
-                data[key+2]
-            );
+            let total = ( value + data[key+1] + data[key+2] );
             if (total > int && key != 0) {
                 increases++;
             }
             int = total;
         }
     })
-
     return increases;
 }
 
