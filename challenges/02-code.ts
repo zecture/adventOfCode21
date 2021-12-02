@@ -1,44 +1,27 @@
 import * as fs from 'fs';
+const dir = { y: 0 , x: 0 } // First Challenge directions
+const dir2 = {y: 0, x: 0, aim: 0 } // Second Challenge directions
 
-/*  x == forward,
-    y == down/up */
-const dir = { y: 0 , x: 0}
-const dir2 = {y: 0, x: 0, aim: 0 }
-
-function forward(number: number) {
-    dir2.x += number;
-    dir2.y += (number * dir2.aim);
-}
-
-function firstStep(heading: string, weight: number){
-    (heading === 'forward') 
-        ? dir.x += weight
-        : (heading === 'down')
-            ? dir.y += weight
-            : (heading === 'up')
-                ? dir.y -= weight
-                : console.log('Error! ', heading, weight)
-}
-
-function secondStep(heading: string, weight: number){
-    (heading === 'forward') 
-    ? forward(weight)
-    : (heading === 'down')
-        ? dir2.aim += weight
-        : (heading === 'up')
-            ? dir2.aim -= weight
-            : console.log('Error! ', heading, weight)
-}
+let commands = {
+    'forward': (n)=>{
+        dir.x += n;
+        dir2.x += n;
+        dir2.y += (n * dir2.aim);
+    },
+    'down': (n)=>{
+        dir.y += n;
+        dir2.aim += n
+    },
+    'up': (n)=> {
+        dir.y -= n,
+        dir2.aim -= n
+    }
+};
 
 fs.readFileSync('./data/02-data.txt','utf8').split('\n').map((line) => {
     const arr: string[] = line.split(' ') || null;
-    const weight: number = parseInt(arr[1]) || 0;
-    const heading: string = arr[0] || '';
-
-    if (heading && weight){
-        firstStep(heading, weight);
-        secondStep(heading, weight)
-    }
+    let cmd = commands[arr[0]]
+    cmd(parseInt(arr[1]))
 })
 
 console.log('First step: ',dir,'\nAnswer: ', dir.y * dir.x);
