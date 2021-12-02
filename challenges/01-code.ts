@@ -1,7 +1,5 @@
 import * as fs from 'fs';
-
-const inputData  = fs.readFileSync('./data/01-data.txt','utf8');
-const data = inputData.split('\n').map(string => {
+const data = fs.readFileSync('./data/01-data.txt','utf8').split('\n').map(string => {
     return parseInt(string);
 })
 
