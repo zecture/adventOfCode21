@@ -5,12 +5,12 @@ import * as fs from 'fs';
 const dir = { y: 0 , x: 0}
 const dir2 = {y: 0, x: 0, aim: 0 }
 
-function forward(number) {
+function forward(number: number) {
     dir2.x += number;
     dir2.y += (number * dir2.aim);
 }
 
-function firstStep(heading, weight){
+function firstStep(heading: string, weight: number){
     (heading === 'forward') 
         ? dir.x += weight
         : (heading === 'down')
@@ -20,7 +20,7 @@ function firstStep(heading, weight){
                 : console.log('Error! ', heading, weight)
 }
 
-function secondStep(heading, weight){
+function secondStep(heading: string, weight: number){
     (heading === 'forward') 
     ? forward(weight)
     : (heading === 'down')
@@ -32,8 +32,8 @@ function secondStep(heading, weight){
 
 fs.readFileSync('./data/02-data.txt','utf8').split('\n').map((line) => {
     const arr: string[] = line.split(' ') || null;
-    const weight = parseInt(arr[1]) || null;
-    const heading = arr[0] || null;
+    const weight: number = parseInt(arr[1]) || 0;
+    const heading: string = arr[0] || '';
 
     if (heading && weight){
         firstStep(heading, weight);
