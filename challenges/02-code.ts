@@ -2,7 +2,7 @@ import * as fs from 'fs';
 const dir = { y: 0 , x: 0 } // First Challenge directions
 const dir2 = {y: 0, x: 0, aim: 0 } // Second Challenge directions
 
-let commands = {
+let commands: { [command: string]: (n: number) => void } = {
     'forward': (n)=>{
         dir.x += n;
         dir2.x += n;
